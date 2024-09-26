@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Jackpot Roller Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Profit Spin</h1>
+        <p class="user-info">User: {{ mob_no }}</p>
+
+        <!-- Wallets Section -->
+        <div class="wallets">
+            <div class="wallet" id="cashbackWallet">
+                <img src="{{ url_for('static', filename='01.png') }}" alt="Cashback" class="wallet-icon">
+                <p>Cashback: Rs <span id="cashbackAmount">{{ cashback }}</span></p>
+            </div>
+            <div class="wallet" id="roiWallet">
+                <img src="{{ url_for('static', filename='02.png') }}" alt="ROI Discount" class="wallet-icon">
+                <p>ROI Discount: <span id="roiAmount">{{ roi }}</span>%</p>
+            </div>
+            <div class="wallet" id="subscriptionWallet">
+                <img src="{{ url_for('static', filename='03.png') }}" alt="Subscription Discount" class="wallet-icon">
+                <p>Finagg Discount: Rs <span id="subscriptionAmount">{{ subscription }}</span></p>
+            </div>
+        </div>
+
+        <!-- Slot Machine -->
+        <div class="slot-machine">
+            <div class="slot" id="slot1">
+                <div class="slot-content"></div>
+            </div>
+            <div class="slot" id="slot2">
+                <div class="slot-content"></div>
+            </div>
+            <div class="slot" id="slot3">
+                <div class="slot-content"></div>
+            </div>
+        </div>
+        <button class="button-54" id="spinButton" onclick="spin()">Spin 1/3</button>
+        <div class="result" id="result"></div>
+
+        <!-- Logout Button -->
+        <form action="{{ url_for('logout') }}" method="post">
+            <button type="submit" class="button-54">Logout</button>
+        </form>
+
+    </div>
+</body>
+</html>

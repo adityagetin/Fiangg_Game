@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <title>Profit Spin</title>
+</head>
+<body>
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='assets/quick.png') }}" alt="Logo" class="login-logo">
+        <form method="post" action="{{ url_for('login') }}">
+            <label for="mob_no">Mobile Number:</label>
+            <input type="text" id="mob_no" name="mob_no" required>
+
+            <label for="otp">PIN:</label>
+            <input type="text" id="otp" name="otp" required>
+
+            <button type="submit">Login</button>
+
+            <!-- Error message display -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <p class="error-message">
+                        {{ messages[0][1] }}  <!-- Display the message below the button -->
+                    </p>
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>
